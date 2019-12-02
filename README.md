@@ -17,3 +17,10 @@ npm install commitizen -g
 
 commitizen init cz-conventional-changelog --save-dev --save-exact
 ```
+
+> Mac下没有node环境的执行以下命令
+
+```
+brew install node
+brew install npm
+```
