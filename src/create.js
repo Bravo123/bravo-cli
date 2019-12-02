@@ -7,19 +7,22 @@ const chalk = require('chalk');
 const { promisify } = require('util');
 let { ncp } = require('ncp');
 let downloadGitRepo = require('download-git-repo');
-const { MetalSmith } = require('metalsmith');
-let { render } = require('consolidate').ejs;
+// const { MetalSmith } = require('metalsmith');
+// let { render } = require('consolidate').ejs;
 
-render = promisify(render);
+// render = promisify(render);
 ncp = promisify(ncp);
 downloadGitRepo = promisify(downloadGitRepo);
 
-const { downloadDirectory } = require('./constants');
+const { downloadDirectory, TEMPLATE_TARO, TEMPLATE_ANT_DESIGN_PRO } = require('./constants');
 // TODO 拉取项目模版 获取对应版本号
 
 // 获取项目仓库列表
 const fetchRepoList = async () => {
-  const { data } = await axios.get('https://api.github.com/users/Bravo123/repos');
+  let { data } = await axios.get('https://api.github.com/users/Bravo123/repos');
+  data = data.filter((item) => (
+    item.name === TEMPLATE_TARO || item.name === TEMPLATE_ANT_DESIGN_PRO
+  ));
   return data;
 };
 
@@ -54,8 +57,7 @@ module.exports = async (projectName) => {
     console.log(chalk.red('项目已存在，请自行重新安装！'));
     return;
   }
-  let repos = await loadingFn(fetchRepoList, 'fetching repos')();
-  repos = repos.map((item) => item.name);
+  const repos = await loadingFn(fetchRepoList, 'fetching repos')();
   // 选模版
   const { repo } = await Inquirer.prompt({
     name: 'repo', // 获取选择后的结果

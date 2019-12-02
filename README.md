@@ -5,7 +5,7 @@
 ### cli工具学习
 
 + `Taro`基础模版 [Github](https://github.com/Bravo123/template-taro)
-+ `Ant Design pro`基础模版 [Github](https://github.com/Bravo123/template-taro)
++ `Ant Design pro`基础模版 [Github](https://github.com/Bravo123/template-ant-design-pro)
 
 基于上面两个拉取基础模版，基础模版中都是已经配置好的`npm install or yarn`即可，上述的基础模版会持续更新
 
