@@ -4,6 +4,13 @@
 
 ### cli工具学习
 
+#### 安装使用步骤
+```
+npm install -g bravo-fe-cli
+
+bravo-fe-cli create [projectName]
+```
+
 + `Taro`基础模版 [Github](https://github.com/Bravo123/template-taro)
 + `Ant Design pro`基础模版 [Github](https://github.com/Bravo123/template-ant-design-pro)
 
